@@ -1,0 +1,31 @@
+<div class="card-row">
+  <div class="card-col" cdkDropListGroup>
+    <nb-card size="medium" *ngFor="let card of todo">
+      <nb-card-header>
+        {{ card.nameCard }}
+        <button nbButton outline status="warning">x</button>
+      </nb-card-header>
+      <nb-card-body>
+        <nb-list
+          cdkDropList
+          [cdkDropListData]="card.list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <nb-list-item cdkDrag *ngFor="let task of card.list">
+            {{ task.nameTask }}
+          </nb-list-item>
+          <nb-list-item [formGroup]="taskForm">
+            <input
+              formControlName="item"
+              type="text"
+              fullWidth
+              nbInput
+              placeholder="Disabled Text field"
+            />
+          </nb-list-item>
+        </nb-list>
+      </nb-card-body>
+      <button nbButton (click)="addTask()" status="basic">+ Thêm thẻ</button>
+    </nb-card>
+  </div>
+</div>
