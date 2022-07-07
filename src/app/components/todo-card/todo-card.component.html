@@ -1,8 +1,6 @@
-
-
 <div *ngIf="!isaddCard">
   <button nbButton (click)="openformCard()" status="basic">
-    + Add Card
+    <nb-icon icon="plus-outline"></nb-icon> Add Card
   </button>
 </div>
 
@@ -15,7 +13,7 @@
     outline
     status="success"
   >
-    +
+    <nb-icon icon="plus-outline" status="success"></nb-icon>
   </button>
 </form>
 
@@ -24,8 +22,14 @@
     <nb-card class="card-form" size="medium" *ngFor="let card of card">
       <nb-card-header>
         {{ card.nameCard }}
-        <button nbButton outline status="danger" (click)="removeCard(card.id)">
-          x
+        <button
+          outline
+          nbButton
+          status="danger"
+          (click)="removeCard(card.id)"
+          class="btn-removeCard"
+        >
+          <nb-icon icon="trash-2-outline" status="danger"></nb-icon>
         </button>
       </nb-card-header>
       <nb-card-body>
@@ -34,21 +38,26 @@
           [cdkDropListData]="card.list"
           (cdkDropListDropped)="drop($event)"
         >
-          <nb-list-item cdkDrag *ngFor="let task of card.list">
-            {{ task.nameTask }}
+          <nb-list-item
+            cdkDrag
+            *ngFor="let task of card.list"
+            class="cdkDragStyle"
+          >
+            <span>{{ task.nameTask }}</span>
+
             <button
               (click)="removeTask(card.id, task.id)"
-              outline
               nbButton
               size="tiny"
               status="danger"
+              class="btn-removeTask"
             >
-              x
+              <nb-icon icon="trash-2"></nb-icon>
             </button>
           </nb-list-item>
           <nb-list-item *ngIf="!isaddTask">
             <button nbButton (click)="openformTask()" status="basic">
-              + Add Task
+              <nb-icon icon="plus-outline"></nb-icon> Add Task
             </button>
           </nb-list-item>
           <nb-list-item [formGroup]="taskForm" *ngIf="isaddTask">
@@ -66,7 +75,7 @@
               outline
               status="success"
             >
-              +
+              <nb-icon icon="plus-outline" status="success"></nb-icon>
             </button>
           </nb-list-item>
         </nb-list>
