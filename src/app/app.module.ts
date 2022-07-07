@@ -18,16 +18,19 @@ import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TodoCardComponent } from './components/todo-card/todo-card.component';
-import { FromtaskComponent } from './fromtask/fromtask.component';
+import { NbDialogService } from '@nebular/theme';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
     TodoCardComponent,
-    FromtaskComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbEvaIconsModule,
     NbDialogModule.forRoot(),
     NbInputModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Card } from 'src/app/models/todos.model';
+
 
 @Component({
   selector: 'app-layout',
@@ -7,11 +9,16 @@ import { Card } from 'src/app/models/todos.model';
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
-  @Input() card: any;
 
-  @Output() emitCard: EventEmitter<any> = new EventEmitter();
+
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
+
+
+
+
 }

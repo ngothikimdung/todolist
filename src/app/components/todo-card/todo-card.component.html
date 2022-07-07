@@ -1,9 +1,32 @@
+
+
+<div *ngIf="!isaddCard">
+  <button nbButton (click)="openformCard()" status="basic">
+    + Add Card
+  </button>
+</div>
+
+<form [formGroup]="cardForm" *ngIf="isaddCard">
+  <input formControlName="item" nbInput placeholder="Name Card" />
+  <button
+    [disabled]="cardForm.invalid"
+    (click)="addCard()"
+    nbButton
+    outline
+    status="success"
+  >
+    +
+  </button>
+</form>
+
 <div class="card-row">
   <div class="card-col" cdkDropListGroup>
-    <nb-card size="medium" *ngFor="let card of todo">
+    <nb-card class="card-form" size="medium" *ngFor="let card of card">
       <nb-card-header>
         {{ card.nameCard }}
-        <button nbButton outline status="warning">x</button>
+        <button nbButton outline status="danger" (click)="removeCard(card.id)">
+          x
+        </button>
       </nb-card-header>
       <nb-card-body>
         <nb-list
@@ -13,19 +36,41 @@
         >
           <nb-list-item cdkDrag *ngFor="let task of card.list">
             {{ task.nameTask }}
+            <button
+              (click)="removeTask(card.id, task.id)"
+              outline
+              nbButton
+              size="tiny"
+              status="danger"
+            >
+              x
+            </button>
           </nb-list-item>
-          <nb-list-item [formGroup]="taskForm">
+          <nb-list-item *ngIf="!isaddTask">
+            <button nbButton (click)="openformTask()" status="basic">
+              + Add Task
+            </button>
+          </nb-list-item>
+          <nb-list-item [formGroup]="taskForm" *ngIf="isaddTask">
             <input
               formControlName="item"
-              type="text"
               fullWidth
               nbInput
-              placeholder="Disabled Text field"
+              placeholder="Name Task"
             />
+
+            <button
+              [disabled]="taskForm.invalid"
+              nbButton
+              (click)="addTask(card.id)"
+              outline
+              status="success"
+            >
+              +
+            </button>
           </nb-list-item>
         </nb-list>
       </nb-card-body>
-      <button nbButton (click)="addTask()" status="basic">+ Thêm thẻ</button>
     </nb-card>
   </div>
 </div>
