@@ -15,6 +15,10 @@
   >
     <nb-icon icon="plus-outline" status="success"></nb-icon>
   </button>
+
+  <button (click)="openformCard()" nbButton outline status="danger">
+    <nb-icon icon="close-outline" status="danger"></nb-icon>
+  </button>
 </form>
 
 <div class="card-row">
@@ -77,6 +81,11 @@
             >
               <nb-icon icon="plus-outline" status="success"></nb-icon>
             </button>
+
+              <button (click)="openformTask()" nbButton outline status="danger">
+                <nb-icon icon="close-outline" status="danger"></nb-icon>
+              </button>
+
           </nb-list-item>
         </nb-list>
       </nb-card-body>

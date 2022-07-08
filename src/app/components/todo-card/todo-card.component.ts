@@ -36,6 +36,7 @@ export class TodoCardComponent implements OnInit {
 
   openformCard() {
     this.isaddCard = !this.isaddCard;
+    this.cardForm.reset();
   }
 
   addCard() {
@@ -51,6 +52,7 @@ export class TodoCardComponent implements OnInit {
 
   openformTask() {
     this.isaddTask = !this.isaddTask;
+    this.taskForm.reset();
   }
 
   addTask(cardId: number) {
